@@ -23,25 +23,35 @@ public abstract class Character {
    * @param ac  the character's armor class
    * @param toHit the character's hit modifier
    */
-  public Character(int hp, int ac, int toHit) {}
+  public Character(int _hp, int _ac, int _toHit) {
+hp = _hp; 
+ac = _ac; 
+_toHit = toHit; 
+  }
 
   /**
    * Gets the character's hit points.
    * @return  the character's hit points
    */
-  public int getHP() {}
+  public int getHP() {
+    return hp; 
+  }
 
   /**
    * Reduces the character's hit points by the given amount.
    * @param dmg the amount of damage to take
    */
-  public void takeDamage(int dmg) {}
+  public void takeDamage(int dmg) {
+    hp= getHP()- dmg; 
+  }
 
   /**
    * Gets the character's armor class.
    * @return  the character's armor class
    */
-  public int getAC() {}
+  public int getAC() {
+    return ac; 
+  }
 
   /**
    * Gets the character's name for use in messages.
@@ -73,5 +83,7 @@ public abstract class Character {
    * @param other  the character to attack
    * @return  true if the attack hit, false otherwise
    */
-  public boolean attack(Character other) {}
+  public boolean attack(Character other) {
+
+  }
 }
