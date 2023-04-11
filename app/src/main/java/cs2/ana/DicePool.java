@@ -14,11 +14,24 @@ public class DicePool {
    * @param numDice the number of dice in the pool
    * @param numSides  the number of sides on each die
    */
-  public DicePool(int numDice, int numSides) {}
+  public DicePool(int numDice, int numSides) {
+dice = new ArrayList<Die>(); 
+    for(int i=0; i<numDice; i++){
+Die d= new Die(numSides); //die not type cuz of package being weird 
+dice.add(d); 
 
+}
+
+  }
   /**
    * Rolls all the dice in the pool and returns the total.
    * @return  the total of all the dice rolls
    */
-  public int roll() {}
+  public int roll() {
+    int sum; 
+    for(int i=0; i<dice.size(); i++){
+      sum+= dice[i].roll; 
+    }
+    return sum; 
+}
 }
