@@ -17,7 +17,7 @@ public class DicePool {
   public DicePool(int numDice, int numSides) {
 dice = new ArrayList<Die>(); 
     for(int i=0; i<numDice; i++){
-Die d= new Die(numSides); //die not type cuz of package being weird 
+Die d= new Die(numSides); 
 dice.add(d); 
 
 }
@@ -28,10 +28,12 @@ dice.add(d);
    * @return  the total of all the dice rolls
    */
   public int roll() {
-    int sum; 
+    int sum=0; 
     for(int i=0; i<dice.size(); i++){
-      sum+= dice[i].roll; 
+      sum+=dice.get(i).roll(); 
+      
     }
+
     return sum; 
 }
 }
