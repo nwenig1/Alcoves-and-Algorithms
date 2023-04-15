@@ -11,30 +11,36 @@ public class Weapon {
    * @param p the DicePool used to calculate damage
    * @param n the name of the Weapon
    */
-  public Weapon(DicePool p, String n) {}
+  public Weapon(DicePool p, String n) {
+    pool = p; 
+    name = n; 
+  }
 
   /**
    * Rolls the Weapon's DicePool and returns the result.
    * @return  the result of the roll
    */
-  public int rollForDamage() {}
-
+  public int rollForDamage() {
+return pool.roll(); 
+  }
   /**
    * Returns the name of the Weapon.
    * @return  the name of the Weapon
    */
-  public String getName() {}
+  public String getName() {
+    return name; 
+  }
 
   /**
    * An instance of the Weapon class for a battleaxe, which has 1d8 damage, named "Battleaxe".
    */
-  public static Weapon battleaxe = null; //REPLACE NULL TO CREATE A BATTLEAXE
+  public static Weapon battleaxe = new Weapon(new DicePool(1,8), "Battleaxe");  //REPLACE NULL TO CREATE A BATTLEAXE
   /**
    * An instance of the Weapon class for unarmed strikes, which has 1d4 damage, named "Unarmed Strike".
    */
-  public static Weapon unarmed = null; //REPLACE NULL TO CREATE AN UNARMED STRIKE
+  public static Weapon unarmed = new Weapon(new DicePool(1, 4), "Unarmed Strike");  //REPLACE NULL TO CREATE AN UNARMED STRIKE
   /**
    * An instance of the Weapon class for a shortsword, which has 1d6 damage, named "Shortsword".
    */
-  public static Weapon shortsword = null; //REPLACE NULL TO CREATE A SHORTSWORD
+  public static Weapon shortsword = new Weapon(new DicePool(1, 6), "Shortsword");  //REPLACE NULL TO CREATE A SHORTSWORD
 }
