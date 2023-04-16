@@ -14,6 +14,7 @@ System.out.println(thing.getName() + "s damage: "
 +thing.rollForDamage()); 
 Warrior noah = new Warrior("noah"); 
 noah.setWeapon(thing);
+    
 
 
  

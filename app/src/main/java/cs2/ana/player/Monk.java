@@ -24,7 +24,12 @@ public class Monk extends Player {
    * @param other  the NPC to attack
    */
   @Override
-  public void takeTurn(NPC other) {}
+  public void takeTurn(NPC other) {
+if(this.attack(other)){ //if the attack hits (true val)
+  this.attack(other);  //attack again
+}
+  }
+
 
     }
 

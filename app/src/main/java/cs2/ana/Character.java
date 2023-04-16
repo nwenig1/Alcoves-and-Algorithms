@@ -84,18 +84,20 @@ toHit = _toHit;
    * @return  true if the attack hit, false otherwise
    */
   public boolean attack(Character other) {
-Die thing = new Die(20); 
-int roll = thing.roll(); 
-System.out.println(this.getName()+ "attacks "+ other.getName()); 
-System.out.println(this.getName()+ "rolled a "+roll + "to hit."); 
+int roll = new Die(20).roll(); 
+System.out.println("***" + this.getName()+ " attacks "+ other.getName()); 
+System.out.println(this.getName()+ " rolled a "+roll + " to hit."); 
 
 
 if(roll+this.toHit>other.getAC()){
-System.out.println(this.getName()+ "hit for "+ this.determineDamage() +"damage"); 
-  return true; 
+  int dmg = this.determineDamage(); 
+System.out.println(this.getName()+ " hit for " + dmg +" damage"); 
+other.takeDamage(dmg);
+  
+return true; 
 }
 else{
-  System.out.println(this.getName() + "missed"); 
+  System.out.println(this.getName() + " missed"); 
   return false; 
 }
   }

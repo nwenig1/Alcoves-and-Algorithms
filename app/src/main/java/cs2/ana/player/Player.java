@@ -81,7 +81,7 @@ public abstract class Player extends Character {
     + " AC:" +this.getAC() 
     + " ToHit:" + toHit 
     + ") Weapon: " 
-    +weapon; 
-    //tohit and weapons might need getter functions 
+    +this.weapon.getName(); 
+    
 }
 }
