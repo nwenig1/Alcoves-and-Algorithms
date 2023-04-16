@@ -14,7 +14,9 @@ public class Monk extends Player {
    * armor class, and +5 to hit.
    * @param name  the name of the Monk
    */
-  public Monk(String name) {}
+  public Monk(String name) {
+    super(new DicePool(3, 6).roll()+8, 12, 5, name); 
+  }
 
   /**
    * Unlike a regular Player, if the Monk's first attack hits, the Monk
@@ -23,4 +25,8 @@ public class Monk extends Player {
    */
   @Override
   public void takeTurn(NPC other) {}
-}
+
+    }
+
+
+

@@ -1,5 +1,8 @@
 package cs2.ana;
 
+import cs2.ana.npc.*; 
+import cs2.ana.player.*; 
+
 public class dndTester {
     public static void main (String [] args){
 Die test = new Die(10); 
@@ -9,7 +12,11 @@ System.out.println("Pool Roll: "+pool.roll());
 Weapon thing = new Weapon(pool, "cutty"); 
 System.out.println(thing.getName() + "s damage: " 
 +thing.rollForDamage()); 
-System.out.println("Text here \n and then a line break"); 
+Warrior noah = new Warrior("noah"); 
+noah.setWeapon(thing);
+
+
+ 
 }
 }
 

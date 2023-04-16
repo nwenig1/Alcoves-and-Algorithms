@@ -61,7 +61,9 @@ public abstract class Player extends Character {
    * 
    * @param other  the NPC to attack
    */
-  public void takeTurn(NPC other) {}
+  public void takeTurn(NPC other) {
+    this.attack(other); 
+  }
 
   /**
    * Formats the Player as a String. The format should be:<br>
@@ -74,5 +76,12 @@ public abstract class Player extends Character {
    */
   @Override
    public String toString() {
-    return \n + this.getName() 
+    return "\n " +this.getName() 
+    + "(HP:" + this.getHP() 
+    + " AC:" +this.getAC() 
+    + " ToHit:" + toHit 
+    + ") Weapon: " 
+    +weapon; 
+    //tohit and weapons might need getter functions 
+}
 }

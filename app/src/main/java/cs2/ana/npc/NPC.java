@@ -13,7 +13,9 @@ public abstract class NPC extends Character {
    * @param ac  the armor class of the NPC
    * @param toHit  the to hit modifier of the NPC
    */
-  public NPC(int hp, int ac, int toHit) {}
+  public NPC(int hp, int ac, int toHit) {
+    super(hp, ac, toHit); 
+  }
 
   /**
    * Performs an attack turn for the NPC. NPCs may only attack Players.
@@ -23,5 +25,7 @@ public abstract class NPC extends Character {
    * 
    * @param other  the Player to attack
    */
-  public void takeTurn(Player other) {}
+  public void takeTurn(Player other) {
+    this.attack(other);
+  }
 }

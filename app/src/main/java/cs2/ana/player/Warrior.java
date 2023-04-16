@@ -13,5 +13,7 @@ public class Warrior extends Player {
    * 
    * @param name The name of the warrior.
    */
-  public Warrior(String name) {}
+  public Warrior(String name) {
+     super(new DicePool(3, 8).roll()+12, 12, 4, name); 
+}
 }
