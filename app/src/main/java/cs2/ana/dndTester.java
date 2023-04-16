@@ -9,6 +9,7 @@ System.out.println("Pool Roll: "+pool.roll());
 Weapon thing = new Weapon(pool, "cutty"); 
 System.out.println(thing.getName() + "s damage: " 
 +thing.rollForDamage()); 
+System.out.println("Text here \n and then a line break"); 
 }
 }
 

@@ -24,25 +24,34 @@ public abstract class Player extends Character {
    * @param toHit  the to hit of the Player
    * @param n  the name of the Player
    */
-  public Player(int hp, int ac, int toHit, String n) {}
+  public Player(int _hp, int _ac, int _toHit, String _n) {
+    super(_hp, _ac, _toHit); 
+    name = _n; 
+  }
 
   /**
    * Sets the weapon that the player is using.
    * @param w  the weapon to use
    */
-  public void setWeapon(Weapon w) {}
+  public void setWeapon(Weapon w) {
+    weapon = w; 
+  }
 
   /**
    * Gets the name of the Player.
    * @return  the name of the Player
    */
-  public String getName() {}
+  public String getName() {
+    return name; 
+  }
 
   /**
    * Determines the damage done by the Player's weapon.
    * @return  total damage done
    */
-  public int determineDamage() {}
+  public int determineDamage() {
+    return this.weapon.rollForDamage(); 
+  } 
 
   /**
    * Performs an attack turn for the Player. Players may only attack NPCs.
@@ -64,5 +73,6 @@ public abstract class Player extends Character {
    * @return  the Player as a String
    */
   @Override
-   public String toString() {}
+   public String toString() {
+    return \n + this.getName() 
 }

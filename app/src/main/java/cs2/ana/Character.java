@@ -26,7 +26,7 @@ public abstract class Character {
   public Character(int _hp, int _ac, int _toHit) {
 hp = _hp; 
 ac = _ac; 
-_toHit = toHit; 
+toHit = _toHit; 
   }
 
   /**
