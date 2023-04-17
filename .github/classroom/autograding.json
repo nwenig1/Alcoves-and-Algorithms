@@ -5,7 +5,7 @@
       "setup": "",
       "run": "./gradlew run",
       "input": "Alice\r\n1\r\n1\r\n",
-      "output": "Name your character:\\nCharacter select - choose between 3 characters\\n1. Warrior\\n2. Monk\\n3. Paladin\\nWeapon select - choose between 3 weapons\\n1. Shortsword\\n2. Battleaxe\\n3. Unarmed\\nYou are Alice \\(HP:[0-9]+ AC:[0-9]+ ToHit:[0-9]+\\) Weapon:.*\\nYou have encountered a .*!\\n(----------Alice's Turn----------\\n(\\*\\*\\*Alice attacks .*\\nAlice rolled a [0-9]+ to hit.\\nAlice (missed.|hit for [0-9]+ damage.)\\n)+(----------.*'s Turn----------\\n(\\*\\*\\*.* attacks Alice\\n.* rolled a [0-9]+ to hit.\\n.* (missed.|hit for [0-9]+ damage.)\\n)+)*)+----------BATTLE OVER----------\\n(Alice|The .*)\\([0-9]+ HP\\) (defeats the .*|has defeated Alice)!",
+      "output": "Name your character:\\nCharacter select - choose between 3 characters\\n1. Warrior\\n2. Monk\\n3. Paladin\\nWeapon select - choose between 3 weapons\\n1. Shortsword\\n2. Battleaxe\\n3. Unarmed\\nYou are Alice \\(HP:[0-9]+ AC:[0-9]+ ToHit:[0-9]+\\).*Weapon:.*\\nYou have encountered a .*!\\n(----------Alice's Turn----------\\n(\\*\\*\\*Alice attacks .*\\nAlice rolled a [0-9]+ to hit.\\nAlice (missed.|hit for [0-9]+ damage.)\\n)+(----------.*'s Turn----------\\n(\\*\\*\\*.* attacks Alice\\n.* rolled a [0-9]+ to hit.\\n.* (missed.|hit for [0-9]+ damage.)\\n)+)*)+----------BATTLE OVER----------\\n(Alice|The .*)\\([0-9]+ HP\\) (defeats the .*|has defeated Alice)!",
       "comparison": "regex",
       "timeout": 10,
       "points": null
@@ -15,7 +15,7 @@
       "setup": "",
       "run": "./gradlew run",
       "input": "Alice\r\n2\r\n3\r\n",
-      "output": "Name your character:\\nCharacter select - choose between 3 characters\\n1. Warrior\\n2. Monk\\n3. Paladin\\nWeapon select - choose between 3 weapons\\n1. Shortsword\\n2. Battleaxe\\n3. Unarmed\\nYou are Alice \\(HP:[0-9]+ AC:[0-9]+ ToHit:[0-9]+\\) Weapon:.*\\nYou have encountered a .*!\\n(----------Alice's Turn----------\\n(\\*\\*\\*Alice attacks .*\\nAlice rolled a [0-9]+ to hit.\\nAlice (missed.|hit for [0-9]+ damage.)\\n)+(----------.*'s Turn----------\\n(\\*\\*\\*.* attacks Alice\\n.* rolled a [0-9]+ to hit.\\n.* (missed.|hit for [0-9]+ damage.)\\n)+)*)+----------BATTLE OVER----------\\n(Alice|The .*)\\([0-9]+ HP\\) (defeats the .*|has defeated Alice)!",
+      "output": "Name your character:\\nCharacter select - choose between 3 characters\\n1. Warrior\\n2. Monk\\n3. Paladin\\nWeapon select - choose between 3 weapons\\n1. Shortsword\\n2. Battleaxe\\n3. Unarmed\\nYou are Alice \\(HP:[0-9]+ AC:[0-9]+ ToHit:[0-9]+\\).*Weapon:.*\\nYou have encountered a .*!\\n(----------Alice's Turn----------\\n(\\*\\*\\*Alice attacks .*\\nAlice rolled a [0-9]+ to hit.\\nAlice (missed.|hit for [0-9]+ damage.)\\n)+(----------.*'s Turn----------\\n(\\*\\*\\*.* attacks Alice\\n.* rolled a [0-9]+ to hit.\\n.* (missed.|hit for [0-9]+ damage.)\\n)+)*)+----------BATTLE OVER----------\\n(Alice|The .*)\\([0-9]+ HP\\) (defeats the .*|has defeated Alice)!",
       "comparison": "regex",
       "timeout": 10,
       "points": null
@@ -25,7 +25,7 @@
       "setup": "",
       "run": "./gradlew run",
       "input": "Alice\r\n3\r\n2",
-      "output": "Name your character:\\nCharacter select - choose between 3 characters\\n1. Warrior\\n2. Monk\\n3. Paladin\\nWeapon select - choose between 3 weapons\\n1. Shortsword\\n2. Battleaxe\\n3. Unarmed\\nYou are Alice \\(HP:[0-9]+ AC:[0-9]+ ToHit:[0-9]+\\) Weapon:.*\\nYou have encountered a .*!\\n(----------Alice's Turn----------\\n(\\*\\*\\*Alice attacks .*\\nAlice rolled a [0-9]+ to hit.\\nAlice (missed.|hit for [0-9]+ damage.)\\n)+(----------.*'s Turn----------\\n(\\*\\*\\*.* attacks Alice\\n.* rolled a [0-9]+ to hit.\\n.* (missed.|hit for [0-9]+ damage.)\\n)+)*)+----------BATTLE OVER----------\\n(Alice|The .*)\\([0-9]+ HP\\) (defeats the .*|has defeated Alice)!",
+      "output": "Name your character:\\nCharacter select - choose between 3 characters\\n1. Warrior\\n2. Monk\\n3. Paladin\\nWeapon select - choose between 3 weapons\\n1. Shortsword\\n2. Battleaxe\\n3. Unarmed\\nYou are Alice \\(HP:[0-9]+ AC:[0-9]+ ToHit:[0-9]+\\).*Weapon:.*\\nYou have encountered a .*!\\n(----------Alice's Turn----------\\n(\\*\\*\\*Alice attacks .*\\nAlice rolled a [0-9]+ to hit.\\nAlice (missed.|hit for [0-9]+ damage.)\\n)+(----------.*'s Turn----------\\n(\\*\\*\\*.* attacks Alice\\n.* rolled a [0-9]+ to hit.\\n.* (missed.|hit for [0-9]+ damage.)\\n)+)*)+----------BATTLE OVER----------\\n(Alice|The .*)\\([0-9]+ HP\\) (defeats the .*|has defeated Alice)!",
       "comparison": "regex",
       "timeout": 10,
       "points": null
