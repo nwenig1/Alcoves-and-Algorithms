@@ -20,10 +20,8 @@ public class Die {
    */
   public int roll() {
     Random rand = new Random(); 
-    int num = rand.nextInt(sides+1); 
-if(num == 0){  //so 0 can't be rolled, 
-  num++;  //not exactly random tho :(
-}
+    int num = rand.nextInt(sides)+1; 
+
     return num; 
   }
 
