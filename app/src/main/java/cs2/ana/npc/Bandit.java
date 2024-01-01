@@ -11,7 +11,7 @@ public class Bandit extends NPC {
    */
   public Bandit() {
     super(new DicePool(2, 8).roll()+2, 
-    12, 3); 
+    12, 3, 20); 
   }
 
   /**

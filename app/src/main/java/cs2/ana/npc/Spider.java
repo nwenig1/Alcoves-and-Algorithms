@@ -13,7 +13,7 @@ public class Spider extends NPC {
   public Spider() {
     super(new DicePool(1, 8).roll()+2,
      13, 
-     3); 
+     3, 10); 
   }
 
   /**

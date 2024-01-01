@@ -3,11 +3,13 @@ package cs2.ana.player;
 import cs2.ana.Character;
 import cs2.ana.Weapon;
 import cs2.ana.npc.NPC;
+import java.util.Scanner; 
 
 /**
  * A Player is a Character that can be controlled by a human player.
  */
 public abstract class Player extends Character {
+
   /**
    * The weapon that the player is currently using.
    */
@@ -18,15 +20,37 @@ public abstract class Player extends Character {
   private String name;
   
   /**
+   * The level of the player 
+   */
+  protected int xpLevel; 
+  
+  /**
+   * The amount of points the player has towards the next level 
+   */
+   protected int xpPoints;
+
+  /** 
+   * The amount of avaliable upgrade points the player has 
+  */
+  protected int upgradePoints; 
+ 
+
+  
+  /**
    * Creates a Player with the given hit points, armor class, to hit, and name.
+   * Starting xp level 1
    * @param hp  the hit points of the Player
-   * @param ac  the armor class of the Player
+   * @param armor  the armor class of the Player
    * @param toHit  the to hit of the Player
    * @param n  the name of the Player
    */
-  public Player(int _hp, int _ac, int _toHit, String _n) {
-    super(_hp, _ac, _toHit); 
+  public Player(int _hp, int _armor, int _toHit, String _n) {
+    super(_hp, _armor, _toHit); 
     name = _n; 
+    xpLevel = 1; 
+    xpPoints = 0; 
+    upgradePoints = 0; 
+  
   }
 
   /**
@@ -36,6 +60,8 @@ public abstract class Player extends Character {
   public void setWeapon(Weapon w) {
     weapon = w; 
   }
+  
+ 
 
   /**
    * Gets the name of the Player.
@@ -43,6 +69,20 @@ public abstract class Player extends Character {
    */
   public String getName() {
     return name; 
+  }
+  /**
+   * Gets the XP level of the Player 
+   * @return the level of the Player 
+   */
+  public int getXP(){
+    return this.xpLevel; 
+  }
+  /**
+   * Gets the XP points (towards the next level) of the Player 
+   * @return the XP points of the Player 
+   */
+  public int getPoints(){
+    return this.xpPoints; 
   }
 
   /**
@@ -78,10 +118,50 @@ public abstract class Player extends Character {
    public String toString() {
     return "\n " +this.getName() 
     + "(HP:" + this.getHP() 
-    + " AC:" +this.getAC() 
+    + " AC:" +this.getArmor() 
     + " ToHit:" + toHit 
+    + " XP Level " + this.getXP()
     + ") Weapon: " 
-    +this.weapon.getName(); 
-    
+    +this.weapon.getName();
+
 }
+/**
+ * 
+ * @param points
+ */
+  public void gainXP(int points){
+    while(this.hasLeveledUp(points)){
+      points-=((this.getXP()*10)-this.xpPoints); 
+      this.xpLevel++; 
+      this.xpPoints=0; 
+      this.upgradePoints++; 
+    }
+    this.xpPoints+=points; //gives remainder of points towards next level
+  }
+  /**
+   * Determines if the character has leveled up. 
+   * Character needs 10*current_level_number of points to level up. 
+   * Points reset upon leveling up. 
+   * Ex: A level 2 character needs 20 points to level up, a level 5 would need 50. 
+   * @param points
+   * @return whether or not the player has leveled up
+   */
+  private boolean hasLeveledUp(int points){
+    return this.getPoints()+points >= (this.getXP()*10); 
+  }
+  public void upgradeStats(){
+    Scanner sc = new Scanner(System.in); 
+    System.out.println("Choose which stat to upgrade:");
+    System.out.println("1. HP");
+    System.out.println("2. Armor");
+    System.out.println("3. Weapon");
+    int choice = sc.nextInt(); 
+    if(choice == 1){
+      hp+=3*this.getXP(); 
+    } else if(choice == 2){
+      armor+=2*this.getXP(); 
+    }else if(choice == 3){
+      this.weapon
+    }
+  }
 }

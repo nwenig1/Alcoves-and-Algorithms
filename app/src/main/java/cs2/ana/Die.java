@@ -29,4 +29,11 @@ public class Die {
    * A die with 20 sides.
    */
   public static Die d20 = new Die(20);  //REPLACE NULL TO CREATE A D20
+  /**
+   * Increases upper limit of what the Die can roll 
+   * For buffing stats of weapons 
+   */
+  public void increaseSide(){
+    this.sides+=2; 
+  }
 }

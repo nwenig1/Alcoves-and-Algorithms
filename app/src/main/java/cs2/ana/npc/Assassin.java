@@ -12,7 +12,7 @@ public class Assassin extends NPC {
    */
   public Assassin() {
 super(new DicePool(3, 6).roll()+6, 
-15, 6);
+15, 6, 50);
   }
 
   /**

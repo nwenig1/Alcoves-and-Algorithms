@@ -36,4 +36,13 @@ dice.add(d);
 
     return sum; 
 }
+/**
+ * Increases all Dice in pool
+ * For buffing weapon damages in Player.java 
+ */
+public void buffPool(){
+  for(Die d:dice){
+    d.increaseSide(); 
+  }
+}
 }

@@ -43,4 +43,7 @@ return pool.roll();
    * An instance of the Weapon class for a shortsword, which has 1d6 damage, named "Shortsword".
    */
   public static Weapon shortsword = new Weapon(new DicePool(1, 6), "Shortsword");  //REPLACE NULL TO CREATE A SHORTSWORD
+  public void buffStats(){
+    this.pool = 
+  }
 }

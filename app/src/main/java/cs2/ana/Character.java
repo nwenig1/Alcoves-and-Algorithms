@@ -11,23 +11,26 @@ public abstract class Character {
   /**
    * The character's armor class.
    */
-  protected int ac;
+  protected int armor;
   /**
    * The character's hit modifier.
    */
   protected int toHit;
 
+
   /**
    * Creates a new character with the given stats.
    * @param hp  the character's hit points
-   * @param ac  the character's armor class
+   * @param armor  the character's armor class
    * @param toHit the character's hit modifier
+   * @param XP the character's XP value
    */
-  public Character(int _hp, int _ac, int _toHit) {
+  public Character(int _hp, int _armor, int _toHit) {
 hp = _hp; 
-ac = _ac; 
-toHit = _toHit; 
-  }
+armor = _armor; 
+toHit = _toHit;  
+}
+  
 
   /**
    * Gets the character's hit points.
@@ -49,8 +52,8 @@ toHit = _toHit;
    * Gets the character's armor class.
    * @return  the character's armor class
    */
-  public int getAC() {
-    return ac; 
+  public int getArmor() {
+    return armor; 
   }
 
   /**
@@ -89,7 +92,7 @@ System.out.println("***" + this.getName()+ " attacks "+ other.getName());
 System.out.println(this.getName()+ " rolled a "+roll + " to hit."); 
 
 
-if(roll+this.toHit>other.getAC()){
+if(roll+this.toHit>other.getArmor()){
   int dmg = this.determineDamage(); 
 System.out.println(this.getName()+ " hit for " + dmg +" damage"); 
 other.takeDamage(dmg);
