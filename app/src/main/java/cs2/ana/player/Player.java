@@ -158,7 +158,7 @@ public abstract class Player extends Character {
   }
 
   /**
-   * Determin;es if the character has leveled up.
+   * Determines if the character has leveled up.
    * Character needs 10*current_level_number of points to level up.
    * Points reset upon leveling up.
    * Ex: A level 2 character needs 20 points to level up, a level 5 would need 50.
@@ -176,6 +176,7 @@ public abstract class Player extends Character {
     System.out.println("1. HP");
     System.out.println("2. Armor");
     System.out.println("3. Weapon");
+    
     int choice = sc.nextInt();
     if (choice == 1) {
       maxHP += 7 * this.getXP();
