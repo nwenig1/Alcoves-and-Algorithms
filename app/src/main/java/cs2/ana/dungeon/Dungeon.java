@@ -18,6 +18,12 @@ public abstract class Dungeon {
     public NPC[] getEnemies(){
         return this.enemies; 
     }
+       //for testing enemy generation 
+       public void printEnemies(){
+        for(int i=0; i<this.enemies.length; i++){
+            System.out.println(enemies[i].toString());
+        }
+    }
      public abstract NPC[] generateEnemies(int enemy_count); 
      public abstract String getName(); 
 }

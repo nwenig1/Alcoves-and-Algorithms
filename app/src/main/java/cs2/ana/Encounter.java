@@ -98,33 +98,35 @@ public class Encounter {
        characterSelect();
        weaponSelect();
        System.out.println("You are " + player);
-       boolean continue_flag = true; 
-       while(continue_flag){
-      Dungeon trial = dungeonSelect(); 
-      NPC[] enemies = trial.getEnemies(); 
-      player.rest(); 
-      for(int i=0; i<enemies.length; i++){
-        if(fightEnemy(enemies[i])){ //if combat is won
-         // player.rest(); 
-         if(i<enemies.length-1){ //pauses before next combat in encounter
-          System.out.println("Preparing for next combat...");
-          try {
-          Thread.sleep(2000);
-        } catch (InterruptedException e) {
-         
-          e.printStackTrace();
-        } 
-         }
-        }else{
-          i=enemies.length; 
-          System.out.println("Would you like to try again? (0 for no, 1 for yes)");
-          if(sc.nextInt() == 0){
-            continue_flag = false; 
-  
-          }
-        }
-      }
-   }
+       Catacomb thing = new Catacomb(); 
+       thing.printEnemies();
+//       boolean continue_flag = true; 
+//       while(continue_flag){
+//      Dungeon trial = dungeonSelect(); 
+//      NPC[] enemies = trial.getEnemies(); 
+//      player.rest(); 
+//      for(int i=0; i<enemies.length; i++){
+//        if(fightEnemy(enemies[i])){ //if combat is won
+//         // player.rest(); 
+//         if(i<enemies.length-1){ //pauses before next combat in encounter
+//          System.out.println("Preparing for next combat...");
+//          try {
+//          Thread.sleep(2000);
+//        } catch (InterruptedException e) {
+//         
+//          e.printStackTrace();
+//        } 
+//         }
+//        }else{
+//          i=enemies.length; 
+//          System.out.println("Would you like to try again? (0 for no, 1 for yes)");
+//          if(sc.nextInt() == 0){
+//            continue_flag = false; 
+//  
+//          }
+//        }
+//      }
+//   }
    System.out.println("Thanks for playing!");
 
      }
