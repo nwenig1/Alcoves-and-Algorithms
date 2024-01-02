@@ -20,6 +20,7 @@ public class Encounter {
     System.out.println("1. Shortsword");
     System.out.println("2. Battleaxe");
     System.out.println("3. Unarmed");
+    try{
     int choice = sc.nextInt();
     if (choice == 1) {
       player.setWeapon(Weapon.shortsword);
@@ -31,6 +32,10 @@ public class Encounter {
       System.out.println("Invalid choice");
       weaponSelect();
     }
+  }catch(Exception E){
+    System.out.println("Invalid input, enter a number");
+    weaponSelect();
+  }
   }
 
   private static void characterSelect() {
@@ -96,7 +101,6 @@ public class Encounter {
     characterSelect();
     weaponSelect();
     boolean continue_flag = true;
-    boolean dragonKilled = false;
     while (continue_flag) {
       player.rest();
       System.out.println("Your current stats " + player);
@@ -109,17 +113,17 @@ public class Encounter {
           if (i < enemies.length - 1) { // pauses before next combat in encounter
             System.out.println("Preparing for next combat...");
             try {
-              Thread.sleep(2000);
+              Thread.sleep(2250);
             } catch (InterruptedException e) {
 
               e.printStackTrace();
             }
           }
           if (i == enemies.length - 1) { // if player defeated last enemy in dungeon, give bonus xp
-            if (trial instanceof DragonLair == false) {
+            if (trial instanceof DragonLair == false) { //gives xp before repeating 
               System.out.println(trial.getName() + " cleared! Gaining " + trial.getBonusXP() + " XP.");
               player.gainXP(trial.getBonusXP());
-            } else {
+            } else { //we're here if the dragon was killed 
               continue_flag = false;
               dragonSlain = true;
             }
@@ -131,13 +135,14 @@ public class Encounter {
             }
 
           }
-        } else {
-          i = enemies.length;
-          System.out.println("Would you like to try again? (0 for no, 1 for yes)");
-          if (sc.nextInt() == 0) {
+        } else { //we're here if player is defeated 
+          i = enemies.length; //breaks out from dungeon loop
+         
+          if(!playAgain()){
             continue_flag = false;
-
           }
+
+          
         }
       }
 
@@ -181,6 +186,19 @@ public class Encounter {
       return false;
     }
 
+  }
+  public static boolean playAgain(){
+    try{
+       System.out.println("Would you like to try again? (0 for no, 1 for yes)");
+      int continueSelect = sc.nextInt(); 
+      if(continueSelect == 0){
+        return false; 
+      } else{
+        return true; 
+      }
+    } catch(Exception E){
+      return playAgain(); 
+    }
   }
   // while(player.getHP() > 0 && enemy.getHP() > 0) {
   // System.out.println("-".repeat(10) + player.getName() + "'s Turn" +

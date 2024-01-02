@@ -34,8 +34,8 @@ public class Dragon extends NPC {
 
         this.attack(other);
         if (Math.random() > .80) {
-            System.out.println("Dragon's burn did " + (int)(other.getHP()*.10) + " damage"); 
-            other.takeDamage((int) (other.getHP() * .10));
+            System.out.println("Dragon's burn did " + Math.abs((int)(other.getHP()*.10)) + " damage"); 
+            other.takeDamage(Math.abs((int) (other.getHP() * .10)));
 
         }
 
