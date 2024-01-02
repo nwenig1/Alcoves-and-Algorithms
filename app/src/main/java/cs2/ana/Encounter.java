@@ -14,7 +14,7 @@ import cs2.ana.dungeon.*;
 public class Encounter {
   private static Scanner sc = new Scanner(System.in);
   private static Player player;
-  private static NPC enemy;
+  //private static NPC enemy;
  
 
 
@@ -101,23 +101,66 @@ public class Encounter {
        boolean continue_flag = true; 
        while(continue_flag){
       Dungeon trial = dungeonSelect(); 
-      
-
+      NPC[] enemies = trial.getEnemies(); 
+      player.rest(); 
+      for(int i=0; i<enemies.length; i++){
+        if(fightEnemy(enemies[i])){ //if combat is won
+         // player.rest(); 
+         if(i<enemies.length-1){ //pauses before next combat in encounter
+          System.out.println("Preparing for next combat...");
+          try {
+          Thread.sleep(2000);
+        } catch (InterruptedException e) {
+         
+          e.printStackTrace();
+        } 
+         }
+        }else{
+          i=enemies.length; 
+          System.out.println("Would you like to try again? (0 for no, 1 for yes)");
+          if(sc.nextInt() == 0){
+            continue_flag = false; 
+  
+          }
+        }
+      }
    }
+   System.out.println("Thanks for playing!");
 
      }
   
 
-     public boolean fightEnemy(){
+     public static boolean fightEnemy(NPC enemy){
      while(player.getHP() > 0 && enemy.getHP() > 0){
         System.out.println("-".repeat(10) + player.getName() + "'s Turn" + "-".repeat(10));
          player.takeTurn(enemy);
+         try {
+          Thread.sleep(1500); 
+        } catch (InterruptedException e) {
+         
+          e.printStackTrace();
+        } 
         if(enemy.getHP() > 0) {
           System.out.println("-".repeat(10) + enemy.getName() + "'s Turn" + "-".repeat(10));
           enemy.takeTurn(player);
+          try {
+          Thread.sleep(1500);
+        } catch (InterruptedException e) {
+         
+          e.printStackTrace();
+        } 
      }
-      return false; 
-     }
+    }
+       if(player.getHP() > 0) {
+      System.out.println(player.getName() + "(" + player.getHP() + " HP) defeats the " + enemy.getName() + "!");
+      player.gainXP(enemy.getXP()); 
+      return true; 
+    } else {
+      System.out.println("The " + enemy.getName() + "(" + enemy.getHP() + " HP) has defeated " + player.getName() + "!");
+    return false; 
+    }
+     
+    }
    // while(player.getHP() > 0 && enemy.getHP() > 0) {
    //   System.out.println("-".repeat(10) + player.getName() + "'s Turn" + "-".repeat(10));
    //   player.takeTurn(enemy);

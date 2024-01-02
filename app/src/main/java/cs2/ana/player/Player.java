@@ -140,7 +140,7 @@ protected int maxHP;
  */
   public void gainXP(int points){
     while(this.hasLeveledUp(points)){
-      System.out.println("Congrats you leveled up to level " + this.getXP()+1 + "!");
+      System.out.println("Congrats you leveled up to level " + (this.getXP()+1) + "!");
       points-=((this.getXP()*10)-this.xpPoints); 
       this.xpLevel++; 
       this.xpPoints=0; 

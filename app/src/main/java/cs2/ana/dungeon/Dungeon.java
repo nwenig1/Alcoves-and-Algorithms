@@ -15,6 +15,9 @@ public abstract class Dungeon {
     public int getNumEnemies(){
         return this.numEnemies; 
     }
+    public NPC[] getEnemies(){
+        return this.enemies; 
+    }
      public abstract NPC[] generateEnemies(int enemy_count); 
      public abstract String getName(); 
 }
