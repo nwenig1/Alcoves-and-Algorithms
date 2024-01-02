@@ -3,6 +3,7 @@ Hello! This is a text-based dungeons and dragons-like game in Java and built thr
 I beefed it up and added some modifications including an XP system,  stat level-ups, additional encounters/enemies/ a final boss, and some other changes gameplay changes. 
 
 Some notes:
+
 Gameplay loop can be run from main in Encounter.java
   
 Character hp resets each dungeon, though not every fight
