@@ -8,7 +8,7 @@ import cs2.ana.npc.Skeleton;
 public class Catacomb extends Dungeon {
 
     public Catacomb(){
-        super(5); 
+        super(5, 80); 
         this.enemies = generateEnemies(5); 
     }
     @Override

@@ -3,12 +3,15 @@ package cs2.ana.dungeon;
 import cs2.ana.npc.NPC;
 
 public abstract class Dungeon {
-     private int numEnemies; 
+     private int numEnemies;
     protected NPC[] enemies; 
+    private int BonusXP; 
+
     
-    public Dungeon(int _numEnemies){
+    public Dungeon(int _numEnemies, int _BonusXP){
         this.numEnemies = _numEnemies; 
         this.enemies =new NPC[_numEnemies]; 
+        this.BonusXP =  _BonusXP; 
        
     }
    
@@ -17,6 +20,9 @@ public abstract class Dungeon {
     }
     public NPC[] getEnemies(){
         return this.enemies; 
+    }
+    public int getBonusXP(){
+        return this.BonusXP; 
     }
        //for testing enemy generation 
        public void printEnemies(){

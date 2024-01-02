@@ -16,7 +16,7 @@ public class Cave extends Dungeon {
      * 
      */
     public Cave(){
-        super(3);
+        super(3, 40);
         this.enemies=generateEnemies(3); 
     }
     /**

@@ -40,9 +40,9 @@ public class Encounter {
     System.out.println("Name your character:");
     String name = sc.nextLine();
     System.out.println("Character select - choose between 3 characters");
-    System.out.println("1. Warrior");
-    System.out.println("2. Monk");
-    System.out.println("3. Paladin");
+    System.out.println("1. Warrior (High hp but low armor, avg damage)");
+    System.out.println("2. Monk (Low hp but high dmg)");
+    System.out.println("3. Paladin (High hp and armor, but low dmg)");
     int choice = sc.nextInt();
     if(choice == 1) {
       player = new Warrior(name);
@@ -64,11 +64,10 @@ public class Encounter {
     if(choice == 1){
     return new Cave(); 
   } else if(choice == 2){
-   // return new Catacomb()
-   return new Cave();  //delete once catacomb exists 
+    return new Catacomb();
+
   } else if(choice ==3){
-    //return new DragonLair()
-    return new Cave(); //delete this once lair exists
+    return new DragonLair();
   }else {
     System.out.println("Invalid choice");
     return dungeonSelect(); 
@@ -95,38 +94,56 @@ public class Encounter {
    */  
 
      public static void main(String[] args) {
-       characterSelect();
+       System.out.println("Welcome to Alcoves and Algorithms!");
+      characterSelect();
        weaponSelect();
-       System.out.println("You are " + player);
-       Catacomb thing = new Catacomb(); 
-       thing.printEnemies();
-//       boolean continue_flag = true; 
-//       while(continue_flag){
-//      Dungeon trial = dungeonSelect(); 
-//      NPC[] enemies = trial.getEnemies(); 
-//      player.rest(); 
-//      for(int i=0; i<enemies.length; i++){
-//        if(fightEnemy(enemies[i])){ //if combat is won
-//         // player.rest(); 
-//         if(i<enemies.length-1){ //pauses before next combat in encounter
-//          System.out.println("Preparing for next combat...");
-//          try {
-//          Thread.sleep(2000);
-//        } catch (InterruptedException e) {
-//         
-//          e.printStackTrace();
-//        } 
-//         }
-//        }else{
-//          i=enemies.length; 
-//          System.out.println("Would you like to try again? (0 for no, 1 for yes)");
-//          if(sc.nextInt() == 0){
-//            continue_flag = false; 
-//  
-//          }
-//        }
-//      }
-//   }
+       
+       System.out.println("A couple notes before we begin: \n You have a 3 main stats you can level up."); 
+       System.out.println("The first is your health. It replenishes upon clearing a whole dungeon, but does not reset between enemies");
+       System.out.println("Armor determines the chance an attack can miss. ");
+       System.out.println("You can upgrade your weapon for the chance to do more damage!");
+         
+       boolean continue_flag = true; 
+       while(continue_flag){
+        System.out.println("Your current stats " + player);
+      Dungeon trial = dungeonSelect(); 
+      NPC[] enemies = trial.getEnemies(); 
+      player.rest(); 
+      for(int i=0; i<enemies.length; i++){
+        if(fightEnemy(enemies[i])){ //if combat is won
+         // player.rest(); 
+         if(i<enemies.length-1){ //pauses before next combat in encounter
+          System.out.println("Preparing for next combat...");
+          try {
+          Thread.sleep(2000);
+        } catch (InterruptedException e) {
+         
+          e.printStackTrace();
+        } 
+         }
+         if(i == enemies.length-1){ //if player defeated last enemy in dungeon, give bonus xp
+          System.out.println(trial.getName() + " cleared! Gaining " + trial.getBonusXP() + " XP.");
+          player.gainXP(trial.getBonusXP());
+            try {
+          Thread.sleep(2000);
+        } catch (InterruptedException e) {
+         
+          e.printStackTrace();
+        } 
+
+         }
+        }else{
+          i=enemies.length; 
+          boolean defeated = true; 
+          System.out.println("Would you like to try again? (0 for no, 1 for yes)");
+          if(sc.nextInt() == 0){
+            continue_flag = false; 
+  
+          }
+        }
+      }
+      
+   }
    System.out.println("Thanks for playing!");
 
      }

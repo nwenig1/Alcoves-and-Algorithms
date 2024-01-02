@@ -12,7 +12,7 @@ public class Skeleton extends NPC {
     private boolean poison_applied = false; 
     public Skeleton(){
         super(new DicePool(3, 10).roll()+3, 
-        15, 4, 35);
+        9, 4, 35);
         poison_applied = false; 
     }
     @Override
