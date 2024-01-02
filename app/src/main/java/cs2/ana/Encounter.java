@@ -55,7 +55,7 @@ public class Encounter {
       characterSelect();
     }
   }
-  private Dungeon dungeonSelect(){
+  private static Dungeon dungeonSelect(){
     System.out.println("Choose your next dungeon:");
     System.out.println("1. Cave");
     System.out.println("2. Catacombs");
@@ -95,23 +95,29 @@ public class Encounter {
    */  
 
      public static void main(String[] args) {
-    //Cave thing = new Cave(); 
-    //thing.printEnemies();
-    characterSelect();
-    weaponSelect();
-    System.out.println("You are " + player);
-   // randomEnemey();
-   boolean continue_flag = true; 
-   while(continue_flag){
-    //pick dungeon
-    
+       characterSelect();
+       weaponSelect();
+       System.out.println("You are " + player);
+       boolean continue_flag = true; 
+       while(continue_flag){
+      Dungeon trial = dungeonSelect(); 
+      
 
    }
 
      }
   
 
-
+     public boolean fightEnemy(){
+     while(player.getHP() > 0 && enemy.getHP() > 0){
+        System.out.println("-".repeat(10) + player.getName() + "'s Turn" + "-".repeat(10));
+         player.takeTurn(enemy);
+        if(enemy.getHP() > 0) {
+          System.out.println("-".repeat(10) + enemy.getName() + "'s Turn" + "-".repeat(10));
+          enemy.takeTurn(player);
+     }
+      return false; 
+     }
    // while(player.getHP() > 0 && enemy.getHP() > 0) {
    //   System.out.println("-".repeat(10) + player.getName() + "'s Turn" + "-".repeat(10));
    //   player.takeTurn(enemy);

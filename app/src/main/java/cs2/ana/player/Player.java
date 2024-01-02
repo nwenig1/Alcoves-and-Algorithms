@@ -34,7 +34,7 @@ public abstract class Player extends Character {
   */
   protected int upgradePoints; 
  
-
+protected int maxHP; 
   
   /**
    * Creates a Player with the given hit points, armor class, to hit, and name.
@@ -46,10 +46,13 @@ public abstract class Player extends Character {
    */
   public Player(int _hp, int _armor, int _toHit, String _n) {
     super(_hp, _armor, _toHit); 
+    maxHP = _hp; 
     name = _n; 
     xpLevel = 1; 
     xpPoints = 0; 
     upgradePoints = 0; 
+
+
   
   }
 
@@ -104,6 +107,12 @@ public abstract class Player extends Character {
   public void takeTurn(NPC other) {
     this.attack(other); 
   }
+  /**
+   * Resets a player's health to their maximum HP
+   */
+  public void rest(){
+    this.hp=maxHP; 
+  }
 
   /**
    * Formats the Player as a String. The format should be:<br>
@@ -131,15 +140,17 @@ public abstract class Player extends Character {
  */
   public void gainXP(int points){
     while(this.hasLeveledUp(points)){
+      System.out.println("Congrats you leveled up to level " + this.getXP()+1 + "!");
       points-=((this.getXP()*10)-this.xpPoints); 
       this.xpLevel++; 
       this.xpPoints=0; 
       this.upgradePoints++; 
+      this.upgradeStats();
     }
     this.xpPoints+=points; //gives remainder of points towards next level
   }
   /**
-   * Determines if the character has leveled up. 
+   * Determin;es if the character has leveled up. 
    * Character needs 10*current_level_number of points to level up. 
    * Points reset upon leveling up. 
    * Ex: A level 2 character needs 20 points to level up, a level 5 would need 50. 
@@ -157,11 +168,13 @@ public abstract class Player extends Character {
     System.out.println("3. Weapon");
     int choice = sc.nextInt(); 
     if(choice == 1){
-      hp+=3*this.getXP(); 
+      maxHP+=10*this.getXP(); 
     } else if(choice == 2){
       armor+=2*this.getXP(); 
     }else if(choice == 3){
-      this.weapon
+      for(int i=0; i<this.getXP(); i++){
+      this.weapon.buffStats();
+      }
     }
   }
 }

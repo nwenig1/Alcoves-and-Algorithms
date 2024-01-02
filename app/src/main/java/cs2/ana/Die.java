@@ -34,6 +34,6 @@ public class Die {
    * For buffing stats of weapons 
    */
   public void increaseSide(){
-    this.sides+=2; 
+    this.sides+=3; 
   }
 }

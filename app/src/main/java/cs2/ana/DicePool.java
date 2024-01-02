@@ -31,7 +31,6 @@ dice.add(d);
     int sum=0; 
     for(int i=0; i<dice.size(); i++){
       sum+=dice.get(i).roll(); 
-      
     }
 
     return sum; 

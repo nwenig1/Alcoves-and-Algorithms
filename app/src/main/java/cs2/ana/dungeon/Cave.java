@@ -39,7 +39,7 @@ public class Cave extends Dungeon {
     public String getName(){
         return "Cave"; 
     }
-    //for testing purposed 
+    //for testing purposes
     public void printEnemies(){
         for(int i=0; i<this.enemies.length; i++){
             System.out.println(enemies[i].toString());
