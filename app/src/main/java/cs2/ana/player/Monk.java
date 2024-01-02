@@ -12,26 +12,24 @@ public class Monk extends Player {
   /**
    * Creates a new Monk with the given name. Monks have 3d6 + 8 hit points, 12
    * armor class, and +5 to hit.
-   * @param name  the name of the Monk
+   * 
+   * @param name the name of the Monk
    */
   public Monk(String name) {
-    super(new DicePool(3, 6).roll()+8, 12, 5, name); 
+    super(new DicePool(3, 6).roll() + 8, 12, 5, name);
   }
 
   /**
    * Unlike a regular Player, if the Monk's first attack hits, the Monk
    * attacks again.
-   * @param other  the NPC to attack
+   * 
+   * @param other the NPC to attack
    */
   @Override
   public void takeTurn(NPC other) {
-if(this.attack(other)){ //if the attack hits (true val)
-  this.attack(other);  //attack again
-}
+    if (this.attack(other)) { // if the attack hits (true val)
+      this.attack(other); // attack again
+    }
   }
 
-
-    }
-
-
-
+}

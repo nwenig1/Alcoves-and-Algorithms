@@ -13,7 +13,7 @@ import cs2.ana.dungeon.*;
 public class Encounter {
   private static Scanner sc = new Scanner(System.in);
   private static Player player;
- 
+  private static boolean dragonSlain = false;
 
   private static void weaponSelect() {
     System.out.println("Weapon select - choose between 3 weapons");
@@ -40,17 +40,23 @@ public class Encounter {
     System.out.println("1. Warrior (High hp but low armor, avg damage)");
     System.out.println("2. Monk (Low hp but high dmg)");
     System.out.println("3. Paladin (High hp and armor, but low dmg)");
-    int choice = sc.nextInt();
-    if (choice == 1) {
-      player = new Warrior(name);
-    } else if (choice == 2) {
-      player = new Monk(name);
-    } else if (choice == 3) {
-      player = new Paladin(name);
-    } else {
-      System.out.println("Invalid choice");
+    try {
+      int choice = sc.nextInt();
+      if (choice == 1) {
+        player = new Warrior(name);
+      } else if (choice == 2) {
+        player = new Monk(name);
+      } else if (choice == 3) {
+        player = new Paladin(name);
+      } else {
+        System.out.println("Invalid choice");
+        characterSelect();
+      }
+    } catch (Exception e) {
+      System.out.println("Invalid choice, enter a number.");
       characterSelect();
     }
+
   }
 
   private static Dungeon dungeonSelect() {
@@ -58,16 +64,21 @@ public class Encounter {
     System.out.println("1. Cave");
     System.out.println("2. Catacombs");
     System.out.println("3. Dragon's Lair");
-    int choice = sc.nextInt();
-    if (choice == 1) {
-      return new Cave();
-    } else if (choice == 2) {
-      return new Catacomb();
+    try {
+      int choice = sc.nextInt();
+      if (choice == 1) {
+        return new Cave();
+      } else if (choice == 2) {
+        return new Catacomb();
 
-    } else if (choice == 3) {
-      return new DragonLair();
-    } else {
-      System.out.println("Invalid choice");
+      } else if (choice == 3) {
+        return new DragonLair();
+      } else {
+        System.out.println("Invalid choice");
+        return dungeonSelect();
+      }
+    } catch (Exception e) {
+      System.out.println("Invalid choice, enter a number");
       return dungeonSelect();
     }
   }
@@ -75,26 +86,23 @@ public class Encounter {
   /**
    * The main method for the game. Allows the user to select a character and a
    * weapon and series of enemy encounters. Player can continue to level up
-   * and attempt encounters, or repeat the same ones to gain more xp. 
+   * and attempt encounters, or repeat the same ones to gain more xp.
    *
    * @param args command line arguments (unused)
    */
 
   public static void main(String[] args) {
-    System.out.println("Welcome to Alcoves and Algorithms!");
-    System.out.println("A couple notes before we begin: \n You have a 3 main stats you can level up.");
-    System.out.println(
-        "The first is your health. It replenishes upon clearing a whole dungeon, but does not reset between enemies");
-    System.out.println("Armor determines the chance an attack can miss. ");
-    System.out.println("You can upgrade your weapon for the chance to do more damage!");
+
     characterSelect();
     weaponSelect();
     boolean continue_flag = true;
+    boolean dragonKilled = false;
     while (continue_flag) {
+      player.rest();
       System.out.println("Your current stats " + player);
       Dungeon trial = dungeonSelect();
       NPC[] enemies = trial.getEnemies();
-      player.rest();
+
       for (int i = 0; i < enemies.length; i++) {
         if (fightEnemy(enemies[i])) { // if combat is won
           // player.rest();
@@ -108,8 +116,13 @@ public class Encounter {
             }
           }
           if (i == enemies.length - 1) { // if player defeated last enemy in dungeon, give bonus xp
-            System.out.println(trial.getName() + " cleared! Gaining " + trial.getBonusXP() + " XP.");
-            player.gainXP(trial.getBonusXP());
+            if (trial instanceof DragonLair == false) {
+              System.out.println(trial.getName() + " cleared! Gaining " + trial.getBonusXP() + " XP.");
+              player.gainXP(trial.getBonusXP());
+            } else {
+              continue_flag = false;
+              dragonSlain = true;
+            }
             try {
               Thread.sleep(2000);
             } catch (InterruptedException e) {
@@ -129,8 +142,12 @@ public class Encounter {
       }
 
     }
+    if (dragonSlain) {
+      System.out.println("Congratulations! You killed the dragon!");
+      player.rest();
+      System.out.println("Your final stats: " + player.toString());
+    }
     System.out.println("Thanks for playing!");
-
   }
 
   public static boolean fightEnemy(NPC enemy) {

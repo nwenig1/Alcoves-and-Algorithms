@@ -9,30 +9,39 @@ import cs2.ana.player.Player;
  * which will apply continuous damage for the rest of the combat phase 
  */
 public class Skeleton extends NPC {
-    private boolean poison_applied = false; 
-    public Skeleton(){
-        super(new DicePool(3, 10).roll()+3, 
-        9, 4, 35);
-        poison_applied = false; 
+    private boolean poison_applied = false;
+
+    public Skeleton() {
+        super(new DicePool(4, 20).roll() + 3,
+                12, 4, 35);
+        poison_applied = false;
     }
+
     @Override
     public String getName() {
-        return "skeleton";
+        return "Skeleton";
     }
 
     @Override
     public int determineDamage() {
-        return new DicePool(2, 10).roll(); 
+        return new DicePool(2, 10).roll();
     }
-    @Override 
-    public void takeTurn(Player other){
-        if(Math.random()>.5){
-            poison_applied = true; 
+
+    /**
+     * Override for skeleton's turn. Has a 50% chance to poison the player
+     * Player is guarenteed to take 2 damage a turn when posioned
+     */
+    @Override
+    public void takeTurn(Player other) {
+        if (Math.random() > .5) {
+            poison_applied = true;
+            System.out.println("Skeleton poisoned " + other.getName());
         }
-        this.attack(other); 
-        if(poison_applied){
+        this.attack(other);
+        if (poison_applied) {
             other.takeDamage(2);
+            System.out.println(other.getName() + " took 2 damage from poison.");
         }
     }
-    
+
 }

@@ -17,54 +17,58 @@ public abstract class Character {
    */
   protected int toHit;
 
-
   /**
    * Creates a new character with the given stats.
-   * @param hp  the character's hit points
-   * @param armor  the character's armor class
+   * 
+   * @param hp    the character's hit points
+   * @param armor the character's armor class
    * @param toHit the character's hit modifier
-   * @param XP the character's XP value
+   * @param XP    the character's XP value
    */
   public Character(int _hp, int _armor, int _toHit) {
-hp = _hp; 
-armor = _armor; 
-toHit = _toHit;  
-}
-  
+    hp = _hp;
+    armor = _armor;
+    toHit = _toHit;
+  }
 
   /**
    * Gets the character's hit points.
-   * @return  the character's hit points
+   * 
+   * @return the character's hit points
    */
   public int getHP() {
-    return hp; 
+    return hp;
   }
 
   /**
    * Reduces the character's hit points by the given amount.
+   * 
    * @param dmg the amount of damage to take
    */
   public void takeDamage(int dmg) {
-    hp= getHP()- dmg; 
+    hp = getHP() - dmg;
   }
 
   /**
    * Gets the character's armor class.
-   * @return  the character's armor class
+   * 
+   * @return the character's armor class
    */
   public int getArmor() {
-    return armor; 
+    return armor;
   }
 
   /**
    * Gets the character's name for use in messages.
-   * @return  the character's name
+   * 
+   * @return the character's name
    */
   public abstract String getName();
 
   /**
    * Determines the amount of damage to deal for a single attack.
-   * @return  the amount of damage to deal
+   * 
+   * @return the amount of damage to deal
    */
   public abstract int determineDamage();
 
@@ -73,35 +77,23 @@ toHit = _toHit;
    * character's toHit modifier. If the result is greater than the other
    * character's armor class, the attack hits and the other character takes
    * damage. Otherwise, the attack misses.
-   * 
-   * This method will print messages to the console indicating the result of
-   * the attack. The format of the messages is:<br>
-   * ***<i>ATTACKER</i> attacks <i>DEFENDER</i><br>
-   * <i>ATTACKER</i> rolled a <i>ROLL_AMOUNT</i> to hit.<br>
-   * If the attack hits:<br>
-   * <i>ATTACKER</i> hit for <i>DAMAGE_AMOUNT</i> damage.<br>
-   * If the attack misses:<br>
-   * <i>ATTACKER</i> missed.<br>
-   * 
-   * @param other  the character to attack
-   * @return  true if the attack hit, false otherwise
+   * @param other the character to attack
+   * @return true if the attack hit, false otherwise
    */
   public boolean attack(Character other) {
-int roll = new Die(20).roll(); 
-System.out.println("***" + this.getName()+ " attacks "+ other.getName()); 
-System.out.println(this.getName()+ " rolled a "+roll + " to hit."); 
+    int roll = new Die(20).roll();
+    System.out.println("***" + this.getName() + " attacks " + other.getName());
+    System.out.println(this.getName() + " rolled a " + roll + " to hit.");
 
+    if (roll + this.toHit > other.getArmor()) {
+      int dmg = this.determineDamage();
+      System.out.println(this.getName() + " hit for " + dmg + " damage");
+      other.takeDamage(dmg);
 
-if(roll+this.toHit>other.getArmor()){
-  int dmg = this.determineDamage(); 
-System.out.println(this.getName()+ " hit for " + dmg +" damage"); 
-other.takeDamage(dmg);
-  
-return true; 
-}
-else{
-  System.out.println(this.getName() + " missed"); 
-  return false; 
-}
+      return true;
+    } else {
+      System.out.println(this.getName() + " missed");
+      return false;
+    }
   }
 }
