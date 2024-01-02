@@ -1,4 +1,4 @@
-# Repository for CS2 HW7 - Alcoves & Algorithms
+# Repository for Alcoves & Algorithms
 Hello! This is a text-based dungeons and dragons-like game in Java and built through gradle, based off a previous class assignment in my Principles of Computer Science 2 course, with Dr. Matthew Hibbs. 
 I beefed it up and added some modifications including an XP system,  stat level-ups, additional encounters/enemies/ a final boss, and some other changes gameplay changes. 
 
